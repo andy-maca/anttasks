@@ -1,0 +1,11 @@
+<project default="build" name='Ant test' >
+		
+	<target name="no_op">	
+	</target>
+	
+	<target name="build">
+	  <echo message="this is ant build" />
+	</target>
+
+	
+</project>
