@@ -11,6 +11,8 @@
     <echo message="##teamcity[message text='error between compilation block' status='ERROR']" />
     <echo message="##teamcity[compilationFinished compiler='msbuild']" />
     
+    <echo message="##teamcity[buildProblem description='this is build problem' identity='problem1']" />
+    
     <fail message="Explicitely fail the build." />
 	</target>
 
