@@ -5,11 +5,11 @@
 	
 	<target name="build">
 	  <echo message="this is ant build" />
-    <echo message="##teamcity[message text='simple error' errorDetails='error detail message' status='ERROR']" />
+    <echo message="##teamcity[message text='simple error' errorDetails='error detail message' status='ERROR' flowId='simpleerror']" />
     
-    <echo message="##teamcity[compilationStarted compiler='msbuild']" />
-    <echo message="##teamcity[message text='error between compilation block' errorDetails='this is the error detail message' status='ERROR']" />
-    <echo message="##teamcity[compilationFinished compiler='msbuild']" />
+    <echo message="##teamcity[compilationStarted compiler='msbuild']" flowId='msbuild'/>
+    <echo message="##teamcity[message text='error between compilation block' errorDetails='this is the error detail message' status='ERROR' flowId='msbuild']" />
+    <echo message="##teamcity[compilationFinished compiler='msbuild']" flowId='msbuild' />
     
     <echo message="##teamcity[buildProblem description='this is build problem' identity='problem1']" />
     
