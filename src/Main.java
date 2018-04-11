@@ -12,6 +12,6 @@ public class Main {
 
 
         System.err.print("This is error message print to System.err");
-        System.out1.println("this is error");
+        System.exit(1);
     }
 }
