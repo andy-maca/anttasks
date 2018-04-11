@@ -16,5 +16,12 @@
     <fail message="Explicitely fail the build." />
 	</target>
 
-	
+	<target name="test">
+	  <echo message="this is test failure" />
+    
+    <echo message="##teamcity[testStarted name='className.testName' flowId='test']" />
+    <echo message="##teamcity[testStdOut name='className.testName' out='text' flowId='test']" />
+    <echo message="##teamcity[testStdErr name='className.testName' out='error text' flowId='test']" />
+    <echo message="##teamcity[testFinished name='className.testName' duration='50' flowId='test']" />
+	</target>
 </project>
