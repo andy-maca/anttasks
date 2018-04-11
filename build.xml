@@ -20,4 +20,8 @@
     <echo message="##teamcity[testFailed name='MyTest.test1' message='failure message' details='message and stack trace' flowId='test']" />  
     <echo message="##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
 	</target>
+  
+  <target name="javac">
+    <javac srcdir="src"  />
+  </target>
 </project>
