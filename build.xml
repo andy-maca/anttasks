@@ -21,7 +21,9 @@
     <echo message="##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
 	</target>
   
-  <target name="javac">
-    <javac srcdir="src"  />
+  <target name="java">
+    <javac srcdir="src" failonerror="true" />
+    <java classname="Main" classpath="src" failonerror="true">
+    </java>
   </target>
 </project>
