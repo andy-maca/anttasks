@@ -10,7 +10,7 @@
     <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']" />
     <echo message="##teamcity[message text='error between compilation block' errorDetails='this is the error detail message' status='ERROR' flowId='msbuild']" />
     <echo message="##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
-    <echo message="##teamcity[buildStatus status='FAILURE' text='build status with failure']" />
+    <echo message="##teamcity[buildStatus status='FAILURE' text='build status with failure' flowId='msbuild']" />
 	</target>
 
 	<target name="test">
