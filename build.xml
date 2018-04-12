@@ -4,17 +4,17 @@
 	</target>
 	
 	<target name="build">
-	  <echo message="this is ant build" />
-    <echo message="##teamcity[message text='simple error' errorDetails='error detail message' status='ERROR' flowId='simpleerror']" />
+    <echo message="the simple error message should be shown in overview page and fail the build when switch on the failure condition 'an error message is logged by build runner'" />
+    <echo message="##teamcity[message text='simple error' errorDetails='simple error detail message' status='ERROR' flowId='simpleerror']" />
     
+    <echo message="the error message between compilation block should be shown in overview page and fail the build even not switch on the failure condition 'an error message is logged by build runner'" />
     <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']" />
-    <echo message="##teamcity[message text='error between compilation block' errorDetails='this is the error detail message' status='ERROR' flowId='msbuild']" />
+    <echo message="##teamcity[message text='error between compilation block' errorDetails='this is the error detail message between compilation block' status='ERROR' flowId='msbuild']" />
     <echo message="##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
-    <echo message="##teamcity[buildStatus status='FAILURE' text='build status with failure' flowId='msbuild']" />
 	</target>
 
 	<target name="test">
-	  <echo message="this is test failure" />
+	  <echo message="this is test failure which should be shown as failed in overview page" />
     
     <echo message="##teamcity[testStarted name='MyTest.test1' flowId='test']" />
     <echo message="##teamcity[testFailed name='MyTest.test1' message='failure message' details='message and stack trace' flowId='test']" />  
