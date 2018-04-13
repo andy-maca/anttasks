@@ -1,5 +1,5 @@
 <project default="build" name='Ant test' >
-		
+		<typedef resource="net/sf/antcontrib/antlib.xml" />
 	<target name="no_op">	
 	</target>
 	
@@ -21,16 +21,24 @@
     <echo message="##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
     
     <echo message="Simulate parallel message" />
-    <echo message="##teamcity[testSuiteStarted name='suiteName1' flowId='suite1']" />
-    <echo message="##teamcity[testSuiteStarted name='suiteName2' flowId='suite2']" />
-    <echo message="##teamcity[testStarted name='unittest' flowId='test1']" />
-    <echo message="##teamcity[testStarted name='unittest' flowId='test2']" />
-    <echo message="##teamcity[testFailed name='unittest' message='test1: The number should be 20000' details='junit.framework.AssertionFailedError: expected:20000 but was:10000|n|r    at junit.framework.Assert.fail(Assert.java:47)|n|r    at junit.framework.Assert.failNotEquals(Assert.java:280)|n|r...' flowId='test1']" />
-    <echo message="##teamcity[testFinished name='unittest' flowId='test1']" />
-    <echo message="##teamcity[testFailed name='unittest' message='test2: The number should be 20000' details='junit.framework.AssertionFailedError: expected:20000 but was:10000|n|r    at junit.framework.Assert.fail(Assert.java:47)|n|r    at junit.framework.Assert.failNotEquals(Assert.java:280)|n|r...' flowId='test2']" />
-    <echo message="##teamcity[testFinished name='unittest' flowId='test2']" />
-    <echo message="##teamcity[testSuiteFinished name='suiteName1' flowId='suite1']" />
-    <echo message="##teamcity[testSuiteFinished name='suiteName2' flowId='suite2']" />
+    <echo message="##teamcity[testSuiteStarted name='test.WebSocketPackageUnitTest.summary' flowId='WebSocketPackageUnitTest']" />
+    <echo message="##teamcity[testSuiteStarted name='test.ThumbnailPreviewServiceUnitTest.summary' flowId='ThumbnailPreviewServiceUnitTest']" />
+    <echo message="##teamcity[testStarted name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
+    <echo message="##teamcity[testSuiteStarted name='test.AnimationPackageUnitTest.summary' flowId='AnimationPackageUnitTest']" />
+    <echo message="##teamcity[testStarted name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
+    <echo message="##teamcity[testStdErr name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
+    <echo message="##teamcity[testStdOut name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
+    <echo message="##teamcity[testStdOut name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
+    <echo message="##teamcity[testStdOut name='AnimationPackageUnitTest.unittest.run' flowId='AnimationPackageUnitTest']" />
+    <echo message="##teamcity[testStdErr name='AnimationPackageUnitTest.unittest.run' flowId='AnimationPackageUnitTest']" />
+    <echo message="##teamcity[testFinished name='WebSocketPackageUnitTest.unittest.run' duration='50' flowId='WebSocketPackageUnitTest']" />
+    <echo message="##teamcity[testStarted name='AnimationPackageUnitTest.unittest.run' flowId='AnimationPackageUnitTest']" />
+    <echo message="##teamcity[testFinished name='AnimationPackageUnitTest.unittest.run' duration='50' flowId='AnimationPackageUnitTest']" />
+    <echo message="##teamcity[testStdErr name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
+    <echo message="##teamcity[testFinished name='ThumbnailPreviewServiceUnitTest.unittest.run' duration='50' flowId='ThumbnailPreviewServiceUnitTest']" />
+    <echo message="##teamcity[testSuiteFinished name='test.ThumbnailPreviewServiceUnitTest.summary' flowId='ThumbnailPreviewServiceUnitTest']" />
+    <echo message="##teamcity[testSuiteFinished name='test.WebSocketPackageUnitTest.summary' flowId='WebSocketPackageUnitTest']" />
+    <echo message="##teamcity[testSuiteFinished name='test.AnimationPackageUnitTest.summary' flowId='AnimationPackageUnitTest']" />
 	</target>
   
   <target name="java">
