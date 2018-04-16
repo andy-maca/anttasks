@@ -43,6 +43,17 @@
         <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
       </sequential>
     </antcontrib:for>
+    
+    <echo message="import junit xml in parallel" />
+    <antcontrib:for param="file" parallel="true">
+      <path>
+        <fileset dir="junitxml" includes="*.xml"/>
+      </path>
+      <sequential>
+        <basename property="junit.filename" file="@{file}"/>
+        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='${junit.filename}']" />
+      </sequential>
+    </antcontrib:for>
 	</target>
   
   <target name="java">
