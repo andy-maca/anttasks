@@ -55,9 +55,8 @@
         <fileset dir="build" includes="*.xml"/>
       </path>
       <sequential>
-        <basename property="junit.filename" file="@{file}"/>
-        <echo message="teamcity[importData type='junit' path='@{file}' flowId='${junit.filename}']" />
-        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='${junit.filename}']" />
+        <echo message="teamcity[importData type='junit' path='@{file}' flowId='@{file}']" />
+        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']" />
       </sequential>
     </antcontrib:for>
 	</target>
