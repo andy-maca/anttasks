@@ -23,8 +23,8 @@
     <echo message="Simulate parallel message" />
     <echo message="##teamcity[testSuiteStarted name='test.WebSocketPackageUnitTest.summary' flowId='WebSocketPackageUnitTest']" />
     <echo message="##teamcity[testSuiteStarted name='test.ThumbnailPreviewServiceUnitTest.summary' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testStarted name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
     <echo message="##teamcity[testSuiteStarted name='test.AnimationPackageUnitTest.summary' flowId='AnimationPackageUnitTest']" />
+    <echo message="##teamcity[testStarted name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
     <echo message="##teamcity[testStarted name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
     <echo message="##teamcity[testStdErr name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
     <echo message="##teamcity[testStdOut name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
