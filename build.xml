@@ -45,9 +45,14 @@
     </antcontrib:for>
     
     <echo message="import junit xml in parallel" />
+    <copy todir="build" overwrite="true">
+      <fileset dir="junitxml">
+        <include name="*.xml"/>
+      </fileset>
+    </copy>
     <antcontrib:for param="file" parallel="true">
       <path>
-        <fileset dir="junitxml" includes="*.xml"/>
+        <fileset dir="build" includes="*.xml"/>
       </path>
       <sequential>
         <basename property="junit.filename" file="@{file}"/>
