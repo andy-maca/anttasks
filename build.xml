@@ -1,5 +1,7 @@
-<project default="build" name='Ant test' >
-		<typedef resource="net/sf/antcontrib/antlib.xml" />
+<project default="build" name='Ant test' xmlns:antcontrib="antlib:net.sf.antcontrib">
+	<taskdef uri="antlib:net.sf.antcontrib"
+             resource="net/sf/antcontrib/antlib.xml"
+             classpath="lib/ant-contrib-1.0b3.jar"/>
 	<target name="no_op">	
 	</target>
 	
@@ -42,7 +44,7 @@
     
     
     
-    <for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="true">
+    <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="true">
       <sequential>
         <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
         <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
@@ -50,7 +52,7 @@
         <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
         <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
       </sequential>
-    </for>
+    </antcontrib:for>
 	</target>
   
   <target name="java">
