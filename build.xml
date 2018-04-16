@@ -39,6 +39,18 @@
     <echo message="##teamcity[testSuiteFinished name='test.ThumbnailPreviewServiceUnitTest.summary' flowId='ThumbnailPreviewServiceUnitTest']" />
     <echo message="##teamcity[testSuiteFinished name='test.WebSocketPackageUnitTest.summary' flowId='WebSocketPackageUnitTest']" />
     <echo message="##teamcity[testSuiteFinished name='test.AnimationPackageUnitTest.summary' flowId='AnimationPackageUnitTest']" />
+    
+    
+    
+    <for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="true">
+      <sequential>
+        <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
+        <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
+        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace']" />
+        <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
+        <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
+      </sequential>
+    </for>
 	</target>
   
   <target name="java">
