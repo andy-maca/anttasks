@@ -22,29 +22,19 @@
     <echo message="##teamcity[testFailed name='MyTest.test1' message='failure message' details='message and stack trace' flowId='test']" />  
     <echo message="##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
     
-    <echo message="Simulate parallel message" />
-    <echo message="##teamcity[testSuiteStarted name='test.WebSocketPackageUnitTest.summary' flowId='WebSocketPackageUnitTest']" />
-    <echo message="##teamcity[testSuiteStarted name='test.ThumbnailPreviewServiceUnitTest.summary' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testSuiteStarted name='test.AnimationPackageUnitTest.summary' flowId='AnimationPackageUnitTest']" />
-    <echo message="##teamcity[testStarted name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
-    <echo message="##teamcity[testStarted name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testStdErr name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
-    <echo message="##teamcity[testStdOut name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testStdOut name='WebSocketPackageUnitTest.unittest.run' flowId='WebSocketPackageUnitTest']" />
-    <echo message="##teamcity[testStdOut name='AnimationPackageUnitTest.unittest.run' flowId='AnimationPackageUnitTest']" />
-    <echo message="##teamcity[testStdErr name='AnimationPackageUnitTest.unittest.run' flowId='AnimationPackageUnitTest']" />
-    <echo message="##teamcity[testFinished name='WebSocketPackageUnitTest.unittest.run' duration='50' flowId='WebSocketPackageUnitTest']" />
-    <echo message="##teamcity[testStarted name='AnimationPackageUnitTest.unittest.run' flowId='AnimationPackageUnitTest']" />
-    <echo message="##teamcity[testFinished name='AnimationPackageUnitTest.unittest.run' duration='50' flowId='AnimationPackageUnitTest']" />
-    <echo message="##teamcity[testStdErr name='ThumbnailPreviewServiceUnitTest.unittest.run' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testFinished name='ThumbnailPreviewServiceUnitTest.unittest.run' duration='50' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testSuiteFinished name='test.ThumbnailPreviewServiceUnitTest.summary' flowId='ThumbnailPreviewServiceUnitTest']" />
-    <echo message="##teamcity[testSuiteFinished name='test.WebSocketPackageUnitTest.summary' flowId='WebSocketPackageUnitTest']" />
-    <echo message="##teamcity[testSuiteFinished name='test.AnimationPackageUnitTest.summary' flowId='AnimationPackageUnitTest']" />
+    <echo message="Tests not in parallel" />
+   <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="false">
+      <sequential>
+        <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
+        <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
+        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace']" />
+        <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
+        <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
+      </sequential>
+    </antcontrib:for>
     
-    
-    
-    <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="true">
+    <echo message="Tests in parallel" />
+    <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true">
       <sequential>
         <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
         <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
