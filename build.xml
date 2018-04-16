@@ -27,7 +27,7 @@
       <sequential>
         <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
         <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
-        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace']" />
+        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']" />
         <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
         <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
       </sequential>
@@ -38,7 +38,7 @@
       <sequential>
         <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
         <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
-        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace']" />
+        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']" />
         <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
         <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
       </sequential>
