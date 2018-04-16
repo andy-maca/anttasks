@@ -56,6 +56,7 @@
       </path>
       <sequential>
         <basename property="junit.filename" file="@{file}"/>
+        <echo message="teamcity[importData type='junit' path='@{file}' flowId='${junit.filename}']" />
         <echo message="##teamcity[importData type='junit' path='@{file}' flowId='${junit.filename}']" />
       </sequential>
     </antcontrib:for>
