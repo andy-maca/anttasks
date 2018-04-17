@@ -10,17 +10,13 @@
     <echo message="##teamcity[message text='simple error' errorDetails='simple error detail message' status='ERROR' flowId='simpleerror']" />
     
     <echo message="the error message between compilation block should be shown in overview page and fail the build even not switch on the failure condition 'an error message is logged by build runner'" />
-    <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']" />
-    <echo message="##teamcity[message text='error between compilation block' errorDetails='this is the error detail message between compilation block' status='ERROR' flowId='msbuild']" />
-    <echo message="##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
+    <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']${line.separator}##teamcity[message text='error between compilation block' errorDetails='this is the error detail message between compilation block' status='ERROR' flowId='msbuild']${line.separator}##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
 	</target>
 
 	<target name="test">
 	  <echo message="this is test failure which should be shown as failed in overview page" />
     
-    <echo message="##teamcity[testStarted name='MyTest.test1' flowId='test']" />
-    <echo message="##teamcity[testFailed name='MyTest.test1' message='failure message' details='message and stack trace' flowId='test']" />  
-    <echo message="##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
+    <echo message="##teamcity[testStarted name='MyTest.test1' flowId='test']${line.separator}##teamcity[testFailed name='MyTest.test1' message='failure message' details='message and stack trace' flowId='test']${line.separator}##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
     
     <echo message="Tests not in parallel" />
    <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="false">
