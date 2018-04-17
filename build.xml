@@ -42,13 +42,25 @@
     </copy>
     <!-- <antcontrib:for param="file" parallel="true"> -->
       <!-- <path> -->
-        <!-- <fileset dir="build" includes="*.xml"/> -->
+         <!-- <fileset dir="build" includes="*.xml"/> -->
       <!-- </path> -->
       <!-- <sequential> -->
-        <!-- <echo message="importing file @{file} flowId='@{file}'" /> -->
-        <!-- <echo message="##teamcity[importdata type='junit' path='@{file}' flowid='@{file}']" ></echo> -->
+         <!-- <echo message="importing file @{file} flowId='@{file}'" /> -->
+         <!-- <echo message="##teamcity[importdata type='junit' path='@{file}' flowid='@{file}']" ></echo> -->
       <!-- </sequential> -->
     <!-- </antcontrib:for> -->
+    <parallel>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite1.xml' flowid='junit.suite1']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite2.xml' flowid='junit.suite2']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite3.xml' flowid='junit.suite3']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite4.xml' flowid='junit.suite4']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite5.xml' flowid='junit.suite5']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite6.xml' flowid='junit.suite6']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite7.xml' flowid='junit.suite7']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite8.xml' flowid='junit.suite8']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite9.xml' flowid='junit.suite9']" ></echo>
+      <echo message="##teamcity[importdata type='junit' path='build/junit.suite10.xml' flowid='junit.suite10']" ></echo>
+    </parallel>
 	</target>
   
   <target name="java">
