@@ -16,25 +16,23 @@
 	</target>
 
 	<target name="test">
-	  <echo message="this is test failure which should be shown as failed in overview page" />
-    
-    <echo message="##teamcity[testStarted name='MyTest.test1' flowId='test']${line.separator}##teamcity[testFailed name='MyTest.test1' message='failure message' details='message and stack trace' flowId='test']${line.separator}##teamcity[testFinished name='MyTest.test1' duration='50' flowId='test']" />
-    
-    <echo message="Tests not in parallel" />
-   <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="false">
-      <sequential>
-        <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']">
-        </echo>
-      </sequential>
-    </antcontrib:for>
-    
+    <delete dir="build" />
     <echo message="Tests in parallel" />
-    <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true">
+    <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true" >
       <sequential>
-        <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']">
-        </echo>
+        <echo  message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']${line.separator}" />
       </sequential>
     </antcontrib:for>
+    
+    <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="false">
+      <sequential>
+        <echo file="build/echo.txt" append="true" message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
+      </sequential>
+    </antcontrib:for>
+    
+    <loadfile property="TcMsg" srcFile="build/echo.txt"/>
+    <echo message="${TcMsg}" />
+         
     
     <echo message="import junit xml in parallel" />
     <copy todir="build" overwrite="true">
@@ -42,16 +40,15 @@
         <include name="*.xml"/>
       </fileset>
     </copy>
-    <antcontrib:for param="file" parallel="true">
-      <path>
-        <fileset dir="build" includes="*.xml"/>
-      </path>
-      <sequential>
-        <echo message="importing file @{file} flowId='@{file}'" />
-        <!-- <echo message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']" ></echo> -->
-        <echo>##teamcity[importData type='junit' path='@{file}' flowId='@{file}']</echo>
-      </sequential>
-    </antcontrib:for>
+    <!-- <antcontrib:for param="file" parallel="true"> -->
+      <!-- <path> -->
+        <!-- <fileset dir="build" includes="*.xml"/> -->
+      <!-- </path> -->
+      <!-- <sequential> -->
+        <!-- <echo message="importing file @{file} flowId='@{file}'" /> -->
+        <!-- <echo message="##teamcity[importdata type='junit' path='@{file}' flowid='@{file}']" ></echo> -->
+      <!-- </sequential> -->
+    <!-- </antcontrib:for> -->
 	</target>
   
   <target name="java">
