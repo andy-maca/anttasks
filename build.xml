@@ -10,7 +10,9 @@
     <echo message="##teamcity[message text='simple error' errorDetails='simple error detail message' status='ERROR' flowId='simpleerror']" />
     
     <echo message="the error message between compilation block should be shown in overview page and fail the build even not switch on the failure condition 'an error message is logged by build runner'" />
-    <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']${line.separator}##teamcity[message text='error between compilation block' errorDetails='this is the error detail message between compilation block' status='ERROR' flowId='msbuild']${line.separator}##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
+    <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']${line.separator}##teamcity[message text='error between compilation block1' errorDetails='this is the error detail message between compilation block1' status='ERROR' flowId='msbuild']${line.separator}##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
+    <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']${line.separator}##teamcity[message text='error between compilation block2' errorDetails='this is the error detail message between compilation block2' status='ERROR' flowId='msbuild']${line.separator}##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
+    <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']${line.separator}##teamcity[message text='error between compilation block3' errorDetails='this is the error detail message between compilation block3' status='ERROR' flowId='msbuild']${line.separator}##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
 	</target>
 
 	<target name="test">
@@ -21,22 +23,24 @@
     <echo message="Tests not in parallel" />
    <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="false">
       <sequential>
-        <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
-        <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
-        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']" />
-        <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
-        <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
+        <echo>
+        ##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']
+        ##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']
+        ##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']
+        ##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']
+        </echo>
       </sequential>
     </antcontrib:for>
     
     <echo message="Tests in parallel" />
     <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true">
       <sequential>
-        <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']" />
-        <echo message="##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']" />
-        <echo message="##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']" />
-        <echo message="##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']" />
-        <echo message="##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
+        <echo>
+        ##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']
+        ##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']
+        ##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']
+        ##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']
+        </echo>
       </sequential>
     </antcontrib:for>
     
