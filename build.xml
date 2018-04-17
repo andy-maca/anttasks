@@ -47,7 +47,7 @@
          <!-- <echo message="##teamcity[importdata type='junit' path='@{file}' flowid='@{file}']" ></echo> -->
       <!-- </sequential> -->
     <!-- </antcontrib:for> -->
-    <parallel>
+    
       <echo message="##teamcity[importData type='junit' path='build/junit.suite1.xml' flowid='junit.suite1']" ></echo>
       <echo message="##teamcity[importData type='junit' path='build/junit.suite2.xml' flowid='junit.suite2']" ></echo>
       <echo message="##teamcity[importData type='junit' path='build/junit.suite3.xml' flowid='junit.suite3']" ></echo>
@@ -58,7 +58,7 @@
       <echo message="##teamcity[importData type='junit' path='build/junit.suite8.xml' flowid='junit.suite8']" ></echo>
       <echo message="##teamcity[importData type='junit' path='build/junit.suite9.xml' flowid='junit.suite9']" ></echo>
       <echo message="##teamcity[importData type='junit' path='build/junit.suite10.xml' flowid='junit.suite10']" ></echo>
-    </parallel>
+    
 	</target>
   
   <target name="java">
