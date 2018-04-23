@@ -20,7 +20,7 @@
     <!-- This doesn't work -->
     <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true" >
       <sequential>
-        <javaprint message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']\n##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']\n##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']\n##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']\n##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
+        <javaprint message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']" />
       </sequential>
     </antcontrib:for>
     
@@ -48,7 +48,7 @@
       </path>
       <sequential>
         <echo message="sending junit file '@{file}'" ></echo>
-        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']${line.separator}" />
+        <javaprint message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']" />
       </sequential>
     </antcontrib:for>
     
