@@ -48,7 +48,7 @@
       </path>
       <sequential>
         <echo message="sending junit file '@{file}'" ></echo>
-        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']" />
+        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']${line.separator}" />
       </sequential>
     </antcontrib:for>
     
