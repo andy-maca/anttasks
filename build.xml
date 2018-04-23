@@ -13,7 +13,7 @@
     <echo message="##teamcity[compilationStarted compiler='msbuild' flowId='msbuild']${line.separator}##teamcity[message text='error between compilation block1' errorDetails='this is the error detail message between compilation block1' status='ERROR' flowId='msbuild']${line.separator}##teamcity[compilationFinished compiler='msbuild' flowId='msbuild']" />
 	</target>
 
-	<target name="test">
+	<target name="test" depends="java">
     <delete dir="build" />
     <echo message="Tests in parallel" />
     
@@ -48,7 +48,7 @@
       </path>
       <sequential>
         <echo message="sending junit file '@{file}'" ></echo>
-        <echo message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']" ></echo>
+        <javaprint message="##teamcity[importData type='junit' path='@{file}' flowId='@{file}']" ></javaprint>
       </sequential>
     </antcontrib:for>
     
@@ -71,7 +71,14 @@
   
   <target name="java">
     <javac srcdir="src" failonerror="true" />
-    <java classname="Main" classpath="src" failonerror="true">
-    </java>
   </target>
+  
+  <macrodef name="javaprint">
+		<attribute name="message" />
+    <sequential>
+      <java classname="Main" classpath="src" failonerror="true">
+        <arg value="@{message}"/>
+      </java>
+    </sequential>
+  </macrodef>  
 </project>
