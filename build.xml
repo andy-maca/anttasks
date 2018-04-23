@@ -17,15 +17,15 @@
     <delete dir="build" />
     <echo message="Tests in parallel" />
     
-    <!-- This doesn't work -->
+    <!-- This doesn't work
     <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true" >
       <sequential>
         <echo message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']${line.separator}" />
       </sequential>
     </antcontrib:for>
- 
+    -->
     
-    <!-- This works -->
+    <!-- This works 
     <antcontrib:for list="suite1,suite2,suite3,suite4,suite5,suite6,suite7,suite8,suite9,suite10" param="suitename" parallel="true">
       <sequential>
         <echo file="build/echo.txt" append="true" message="##teamcity[testSuiteStarted name='@{suitename}' flowId='@{suitename}']${line.separator}##teamcity[testStarted name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testFailed name='@{suitename}.unittest.run' message='@{suitename}.unittest.run: failure message' details='@{suitename}.unittest.run: message and stack trace' flowId='@{suitename}']${line.separator}##teamcity[testFinished name='@{suitename}.unittest.run' flowId='@{suitename}']${line.separator}##teamcity[testSuiteFinished name='@{suitename}' flowId='@{suitename}']${line.separator}" />
@@ -34,7 +34,7 @@
     
     <loadfile property="TcMsg" srcFile="build/echo.txt"/>
     <echo message="${TcMsg}" />
-    
+    -->
     
     <echo message="import junit xml in parallel" />
     <copy todir="build" overwrite="true">
