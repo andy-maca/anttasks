@@ -75,13 +75,17 @@
   
   <target name="testCompileError">
     <echo message="test service message of compilation" />
-    <sequential>
-      <javaprint message="##teamcity[compilationStarted compiler='tslint' flowId='123456']" />
-      <javaprint message="##teamcity[message text='this is error test should be shown' flowId='123456' status='ERROR']" />
-      <javaprint message="##teamcity[message text='this is error test should be shown' flowId='123456' status='ERROR']" />
-      <javaprint message="##teamcity[message text='this is error test should be shown' flowId='123456' status='ERROR']" />
-      <javaprint message="##teamcity[compilationFinished compiler='tslint' flowId='123456']" />
-    </sequential>
+    
+    <antcontrib:for list="parallel_suite1,parallel_suite2,parallel_suite3,parallel_suite4,parallel_suite5,parallel_suite6,parallel_suite7,parallel_suite8,parallel_suite9,parallel_suite10" param="suitename" parallel="true" >
+      <sequential>
+        <javaprint message="##teamcity[compilationStarted compiler='tslint.@{suitename}' flowId='tslint.@{suitename}']" />
+        <javaprint message="##teamcity[message text='this is error test should be shown' flowId='tslint.@{suitename}' status='ERROR']" />
+        <javaprint message="##teamcity[message text='this is error test should be shown' flowId='tslint.@{suitename}' status='ERROR']" />
+        <javaprint message="##teamcity[message text='this is error test should be shown' flowId='tslint.@{suitename}' status='ERROR']" />
+        <javaprint message="##teamcity[compilationFinished compiler='tslint.@{suitename}' flowId='tslint.@{suitename}']" />
+      </sequential>
+    </antcontrib:for>
+    
   </target>
   
   <macrodef name="javaprint">
