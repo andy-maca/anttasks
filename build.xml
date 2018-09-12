@@ -73,6 +73,17 @@
     <javac srcdir="src" failonerror="true" />
   </target>
   
+  <target name="testCompileError">
+    <echo message="test service message of compilation" />
+    <sequential>
+      <javaprint message="##teamcity[compilationStarted compiler='tslint' flowId='123456']" />
+      <javaprint message="##teamcity[message text='this is error test should be shown' flowId='123456' status='ERROR']" />
+      <javaprint message="##teamcity[message text='this is error test should be shown' flowId='123456' status='ERROR']" />
+      <javaprint message="##teamcity[message text='this is error test should be shown' flowId='123456' status='ERROR']" />
+      <javaprint message="##teamcity[compilationFinished compiler='tslint' flowId='123456']" />
+    </sequential>
+  </target>
+  
   <macrodef name="javaprint">
 		<attribute name="message" />
     <sequential>

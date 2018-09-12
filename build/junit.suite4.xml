@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
+<testsuite time="0.08400" timestamp="2018-04-12T10:31:50" errors="0" failures="0" tests="1" skipped="0" hostname="BUILD-14" name="test.suite4.unit">
+  <testcase id="1" name="suite4.testConstructor" time="0.08400"></testcase>
+</testsuite>

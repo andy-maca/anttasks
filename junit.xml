@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding='ISO-8859-1' standalone='yes' ?>
+<testsuite time="0.6890" timestamp="2018-04-12T10:33:34" errors="0" failures="0" tests="8" skipped="0" hostname="BUILD-15" name="test.Licensing.unit">
+  <testcase id="1" name="TestLicenseManager.testCreateLicenseConfiguration" time="0.00100"></testcase>
+  <testcase id="2" name="TestLicenseServer.testLoadLicenseFileWithWrongChecksum" time="0.30400"></testcase>
+  <testcase id="3" name="TestLicenseServer.testGetCheckReleaseLicense" time="0.31900"></testcase>
+  <testcase id="4" name="TestLicenseServer.testReload" time="0.03000"></testcase>
+  <testcase id="5" name="TestLicenseServer.testEvaluationModeDay0" time="0.01000"></testcase>
+  <testcase id="6" name="TestLicenseServer.testEvaluationModeDay30" time="0.00900"></testcase>
+  <testcase id="7" name="TestLicenseServer.testEvaluationModeDay31" time="0.00700"></testcase>
+  <testcase id="8" name="TestLicenseServer.testEvaluationModeFixDate" time="0.00900"></testcase>
+</testsuite>
